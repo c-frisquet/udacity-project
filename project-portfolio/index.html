@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cam Portfolio</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="row">
+                <!--Image credit to Udacity-->
+                <div class="col-xs-2"><img class="title-logo" src="images/udacity-logo.svg" alt="Udacity Logo"></div>
+                <div class="col-xs-10 text-right text-uppercase">
+                    <h1 class="title-super text-thin">Camille Frisquet</h1>
+                    <h4>Front-end Ninja</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr class="hori-rule">
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="row">
+                <div class="col-xs-12">
+                    <picture>
+                        <source media="(min-width: 768px)" srcset="images/minsc_large.jpg" alt="Image of my cat">
+                        <img class="img-responsive" src="images/minsc_small.jpg" alt="Image of my cat">
+                    </picture>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12"><h2 class="text-muted text-margin">Featured Work</h2></div>
+            </div>
+            <div class="row text-center">
+                <div class="col-xs-12 col-sm-6 col-md-4 text-colored text-heavy">
+                    <img class="img-responsive hover-class" src="images/mockuptoarticle.jpg" alt="Image of a transition of a mockup to an article" data-toggle="modal" data-target="#project1">
+                    <h3 class="text-uppercase">Mockup to Article</h3>
+                    <p><a href="https://github.com/c-frisquet/udacity-project/tree/master/mockup-to-article">https://github.com/udacity-project/mockup-to-article</a></p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <img class="img-responsive hover-class" src="images/animal-card.jpg" alt="Image of 2 cards" data-toggle="modal" data-target="#project2">
+                    <h3 class="text-uppercase">Animal Trading Card</h3>
+                    <p><a href="https://github.com/c-frisquet/udacity-project/tree/master/fend-animal-trading-cards-master">https://github.com/c-frisquet/udacity-project/fend-animal-trading-cards-master</a></p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <img class="img-responsive hover-class" src="images/portfolio-mockup.jpg" alt="Image of the mockup of the portfolio project" data-toggle="modal" data-target="#project3">
+                    <h3 class="text-uppercase">Portfolio</h3>
+                    <p><a href="https://github.com/c-frisquet/udacity-project/tree/master/project-portfolio">https://github.com/c-frisquet/udacity-project/project-portfolio</a></p>
+                </div>
+            </div>
+        </main>
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="project1" tabindex="-1" role="dialog" aria-labelledby="mockup-article" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-border">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="mockup-article">Udacity Project: Mockup to Article</h4>
+                </div>
+                <div class="modal-body">
+                    <img class="img-responsive" src="images/mockuptoarticle.jpg" alt="Image of a transition of a mockup to an article">
+                    This was my first project in this class. I learned a lot about HTML.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="project2" tabindex="-1" role="dialog" aria-labelledby="animal-card" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-border">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="animal-card">Animal Trading Card</h4>
+                </div>
+                <div class="modal-body">
+                    <img class="img-responsive" src="images/animal-card.jpg" alt="Image of 2 cards">
+                    This was my second project in this class. A deeper understanding of HTML and CSS.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="project3" tabindex="-1" role="dialog" aria-labelledby="portfolio" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-border">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="portfolio">Portfolio</h4>
+                </div>
+                <div class="modal-body">
+                    <img class="img-responsive" src="images/portfolio-mockup.jpg" alt="Image of the mockup of the portfolio project">
+                    This was my third project in this class. I learned the use of framework and responsive web design.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
