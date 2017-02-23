@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["google"],
+  "rules": {
+    "indent": ["error", 4],
+    "max-len": ["warn", 120],
+    "no-undef": "off",
+    "require-jsdoc": "off"
+  },
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jquery": true,
+    "node": true
+  }
+}
