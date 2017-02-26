@@ -5,13 +5,14 @@
     "indent": ["error", 4],
     "max-len": ["warn", 120],
     "no-undef": "off",
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "no-negated-condition": "off",
+    "no-unused-vars": "off"
   },
   "env": {
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "jquery": true,
     "node": true
   }
 }

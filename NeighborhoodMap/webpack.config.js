@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: [
+        'babel-polyfill',
+        'whatwg-fetch',
         'webpack-dev-server/client?http://0.0.0.0:3000',
         `webpack/hot/only-dev-server`,
         `${__dirname}/src/app.js`

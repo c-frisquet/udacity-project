@@ -4,7 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry: `${__dirname}/src/app.js`,
+    entry: [
+        'babel-polyfill',
+        'whatwg-fetch',
+        `${__dirname}/src/app.js`
+    ],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
