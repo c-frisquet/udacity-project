@@ -54,17 +54,9 @@ const brasserieData = [
     }
 ];
 
-function loadGoogleMap() {
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = "https://maps.googleapis.com/maps/api/js?v=3&key=" +
-        "AIzaSyBdHx7GHO_zFqjqJ6zY-gIfb9SLIuZ7A6k&callback=initMap";
-    document.body.appendChild(script);
-}
-window.onload = loadGoogleMap;
-
 let map;
 let init = false;
+let InfoWindow;
 
 const getContentFromWikipedia = function(target) {
     const wikipediaUrl = `https://en.wikipedia.org/w/api.php?&origin=*&format=json&action=query`;
@@ -86,27 +78,29 @@ const getContentFromWikipedia = function(target) {
             switch (status) {
             case 200:
                 target.wikiIntro = responseJSON.query.pages[Object.keys(responseJSON.query.pages)[0]];
-                target.infoWindow.setContent(
-                    '<div class="infoContainer">' +
-                    '<h2>' + target.name + '</h2>' +
-                    `<a href="http://en.wikipedia.org/?curid=${target.wikiIntro.pageid}">Link to Wikipedia page</a>` +
-                    '<p class="wikiExtract">' + target.wikiIntro.extract + '</p>' +
-                    '</div>'
-                );
+                if (target.wikiIntro.extract) {
+                    target.infoWindowContent = '<div class="infoContainer">' +
+                        '<h2>' + target.name + '</h2>' +
+                        '<h4>Extract from Wikipedia</h4>' +
+                        '<p class="wikiExtract">' + target.wikiIntro.extract + '</p>' +
+                        `<a href="http://en.wikipedia.org/?curid=${target.wikiIntro.pageid}">` +
+                        'Link to Wikipedia page</a>' +
+                        '</div>';
+                } else {
+                    target.infoWindowContent = '<div class="infoContainer">' +
+                        '<p class="error">Sorry we were unable to get this information, try again later.</p>' +
+                        '</div>';
+                }
                 break;
             default:
-                target.infoWindow.setContent(
-                    '<div class="infoContainer">' +
+                target.infoWindowContent = '<div class="infoContainer">' +
                     '<p class="error">Sorry we were unable to get this information, try again later.</p>' +
-                    '</div>'
-                );
+                    '</div>';
             }
         }).catch(error => {
-            target.infoWindow.setContent(
-                '<div class="infoContainer">' +
+            target.infoWindowContent = '<div class="infoContainer">' +
                 '<p class="error">Sorry we were unable to get this information, try again later.</p>' +
-                '</div>'
-            );
+                '</div>';
         });
 };
 
@@ -121,33 +115,36 @@ const setMarkers = function(data) {
         });
         bounds.extend(elem.marker.position);
         getContentFromWikipedia(elem);
-        elem.infoWindow = new google.maps.InfoWindow();
-        elem.infoWindow.marker = elem.marker;
         elem.openInfoWindow = function() {
+            brasserieData.forEach(function(brasserie) {
+                brasserie.marker.setAnimation(null);
+            });
             elem.marker.setAnimation(google.maps.Animation.BOUNCE);
-            elem.infoWindow.open(map, elem.marker);
+            InfoWindow.marker = elem.marker;
+            InfoWindow.setContent(elem.infoWindowContent);
+            InfoWindow.open(map, elem.marker);
             map.setCenter(elem.marker.position);
         };
         elem.marker.addListener('click', elem.openInfoWindow);
-        google.maps.event.addListener(elem.infoWindow, 'closeclick', function() {
-            elem.marker.setAnimation(null);
-        });
     });
     map.fitBounds(bounds);
+    google.maps.event.addDomListener(window, 'resize', function() {
+        map.fitBounds(bounds);
+    });
 };
 
 const displayMarkers = function(data) {
     data.forEach(function(elem) {
-        if (elem.display()) {
-            elem.marker.setMap(map);
-        } else {
-            elem.marker.setMap(null);
-        }
+        elem.marker.setVisible(elem.display());
     });
 };
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'));
+    InfoWindow = new google.maps.InfoWindow();
+    google.maps.event.addListener(InfoWindow, 'closeclick', function() {
+        InfoWindow.marker.setAnimation(null);
+    });
     setMarkers(brasserieData);
     init = true;
 }
