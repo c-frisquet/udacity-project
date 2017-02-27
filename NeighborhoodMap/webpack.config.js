@@ -32,7 +32,8 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new HtmlWebpackPlugin({
-            template: `${__dirname}/src/index.tmpl.html`
+            template: `${__dirname}/src/index.tmpl.html`,
+            inject: false
         }),
         new webpack.HotModuleReplacementPlugin()
     ]

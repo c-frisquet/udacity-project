@@ -29,7 +29,8 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new HtmlWebpackPlugin({
-            template: `${__dirname}/src/index.tmpl.html`
+            template: `${__dirname}/src/index.prod.html`,
+            inject: false
         }),
         new ExtractTextPlugin('style.css'),
         new webpack.optimize.CommonsChunkPlugin('common.js'),

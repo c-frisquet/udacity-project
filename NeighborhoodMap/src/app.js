@@ -151,6 +151,12 @@ function initMap() {
 
 window.initMap = initMap;
 
+function mapError() {
+    alert("Sorry we haven't been able to call Google Maps, please try again later.");
+}
+
+window.mapError = mapError;
+
 function BeerMapViewModel() {
     const self = this;
     self.brasseries = ko.observableArray(brasserieData);

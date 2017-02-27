@@ -18,13 +18,9 @@
                 </ul>
             </nav>
             <div id="map"></div>
-            <script>
-                function mapError() {
-                    alert("Sorry we haven't been able to call Google Maps, please try again later.");
-                }
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBdHx7GHO_zFqjqJ6zY-gIfb9SLIuZ7A6k&callback=initMap"
-            async defer onerror="mapError()"></script>
         </main>
+        <script src="./bundle.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBdHx7GHO_zFqjqJ6zY-gIfb9SLIuZ7A6k&callback=initMap"
+                async defer onerror="mapError()"></script>
     </body>
 </html>
