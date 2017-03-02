@@ -97,8 +97,9 @@ $(function() {
         });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
-    describe('New Feed Selection', function() {
-        if (allFeeds.length > 1) {
+    // putting this test in an if to avoid testing this when there is only one feed.
+    if (allFeeds.length > 1) {
+        describe('New Feed Selection', function() {
             var initialFeed;
             beforeEach(function(done) {
                 loadFeed(0, function() {
@@ -117,6 +118,6 @@ $(function() {
                 expect(newFeed).not.toBe(initialFeed);
                 done();
             });
-        }
-    });
+        });
+    }
 }());
